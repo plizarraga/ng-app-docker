@@ -24,7 +24,7 @@ COPY . /app
 RUN npm run build --prod
 
 # Stage 2: Setup Nginx to serve the built Angular app
-FROM nginx
+FROM nginx:1.25.1-alpine
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build-step /app/dist/ng-app-docker /usr/share/nginx/html
 EXPOSE 80
